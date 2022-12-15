@@ -26,4 +26,16 @@ export class CourseCardComponent {
     console.log(`${this.course.description} has ${this.views} views!`)
     this.courseEmitter.emit(this.course)
   }
+
+  cardClasses(){
+    return {
+      'beginner': this.course.category === 'BEGINNER'
+    }
+  }
+
+  cardStyles(){
+    return {
+      'background-image': `url(${this.course.iconUrl})`
+    }
+  }
 }

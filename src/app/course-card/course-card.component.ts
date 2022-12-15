@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, TemplateRef } from '@angular/core';
 import { Course } from '../model/course';
 
 @Component({
@@ -10,6 +10,10 @@ export class CourseCardComponent {
 
   @Input()
   course: Course;
+
+  @Input()
+  noImageTpl: TemplateRef<any>
+
   views: number = 0;
 
   @Input()

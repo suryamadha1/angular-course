@@ -17,28 +17,36 @@
     </div>
 </div> -->
 
-<div class="demo">
+<!-- <div class="demo">
     <div>Start Date: {{startDate | date: 'dd MMM yyyy'}}</div>
+</div> -->
+
+<div class="courses" *ngFor="let course of courses">
+  <ng-template #noImage let-courseName="description">
+    <p class="warn">{{ courseName }} has no image yet.</p>
+    <img src="/assets/empty-image.png" />
+  </ng-template>
+  <!-- <div
+    *ngTemplateOutlet="noImage; context: { description: course.description }"
+  ></div> -->
+
+  <course-card (courseSelected)="onCourseSelected($event)" [course]="course" [noImageTpl]="noImage">
+    <img width="300" alt="Angular Logo" [src]="course.iconUrl" />
+  </course-card>
 </div>
-<div
-  class="courses"
-  *ngFor="
+
+<!-- [cardIndex]="i + 1" -->
+<!-- [class.is-first]="isFirst"
+[class.is-last]="isLast"
+[class.is-even]="isEven"
+[class.is-odd]="isOdd" -->
+<!--   
+    *ngFor="
     let course of courses | slice:0:2;
     index as i;
     first as isFirst;
     last as isLast;
     even as isEven;
     odd as isOdd
-  "
->
-  <course-card
-    (courseSelected)="onCourseSelected($event)"
-    [course]="course"
-    [cardIndex]="i + 1"
-    ></course-card>
-</div>
-
-<!-- [class.is-first]="isFirst"
-[class.is-last]="isLast"
-[class.is-even]="isEven"
-[class.is-odd]="isOdd" -->
+  " 
+-->

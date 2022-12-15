@@ -1,16 +1,15 @@
 <div class="course-card" *ngIf="course" [ngClass]="cardClasses()">
   <div class="course-title" [ngStyle]="cardStyles()">
-    {{ cardIndex + " - " + course.description }}
+    {{ cardIndex || '' + " - " + course.description }}
   </div>
-  <img
-    width="300"
-    alt="Angular Logo"
-    [src]="course.iconUrl"
-    *ngIf="course?.iconUrl; else noImage"
-  />
 
-  <ng-template #noImage>
-    <p>No Image is Available</p>
+  <ng-content select="img" *ngIf="course.iconUrl; else blankImage"></ng-content>
+  <!-- <ng-template #noImage>
+    <p class="warn">No Image is Available</p>
+    <img src="/assets/empty-image.png" />
+  </ng-template> -->
+  <ng-template #blankImage>
+    <ng-container *ngTemplateOutlet="noImageTpl; context: {description: course.description}"></ng-container>
   </ng-template>
   <div class="course-description">
     {{ course.longDescription }}

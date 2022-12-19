@@ -2,6 +2,7 @@ import {
     AfterContentInit,
     AfterViewInit,
     Component,
+    Inject,
     ContentChildren,
     ElementRef,
     EventEmitter,
@@ -13,11 +14,13 @@ import {
 } from '@angular/core';
 import {Course} from '../model/course';
 import {CourseImageComponent} from '../course-image/course-image.component';
+import { CoursesService } from '../services/courses.service';
 
 @Component({
     selector: 'course-card',
     templateUrl: './course-card.component.html',
-    styleUrls: ['./course-card.component.css']
+    styleUrls: ['./course-card.component.css'],
+
 })
 export class CourseCardComponent implements OnInit {
 
@@ -31,12 +34,14 @@ export class CourseCardComponent implements OnInit {
     courseEmitter = new EventEmitter<Course>();
 
 
-    constructor() {
+    constructor( private coursesService: CoursesService) {
 
     }
 
     ngOnInit() {
-
+        console.log(
+            'coursesService course card', this.coursesService.id
+        )
     }
 
 

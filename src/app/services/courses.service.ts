@@ -5,13 +5,15 @@ import {Observable} from 'rxjs';
 
 let counter = 0;
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable(
+  {
+    providedIn: 'root'
+  }
+)
 export class CoursesService {
   id: number;
 
-  constructor(private http: HttpClient) {
+  constructor( private http: HttpClient) {
     counter++;
     this.id = counter;
   }

@@ -11,24 +11,23 @@ import { AppConfig, APP_CONFIG, CONFIG_TOKEN } from './config';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
 
-  courses$: Observable<Course[]>
+  // courses$: Observable<Course[]>
+  courses = COURSES;
 
-
-  constructor( private coursesService: CoursesService,
-    // @Inject(CONFIG_TOKEN) private config: AppConfig
+  constructor(private coursesService: CoursesService,
+    @Inject(CONFIG_TOKEN) private config: AppConfig
     ) {
-    // console.log(config);
   }
 
   ngOnInit() {
     
-    const params = new HttpParams().set("page", "1").set("pageSize", 10);
+    // const params = new HttpParams().set("page", "1").set("pageSize", 10);
 
-    this.courses$ = this.coursesService.loadCourses();
+    // this.courses$ = this.coursesService.loadCourses();
     // Previously done
     // this.http.get('/api/courses',{params})
     //   .subscribe(

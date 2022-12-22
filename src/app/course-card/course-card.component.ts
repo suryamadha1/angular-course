@@ -10,7 +10,7 @@ import {
     OnInit,
     Output,
     QueryList,
-    ViewEncapsulation
+    ViewEncapsulation,
 } from '@angular/core';
 import {Course} from '../model/course';
 import {CourseImageComponent} from '../course-image/course-image.component';
@@ -20,7 +20,6 @@ import { CoursesService } from '../services/courses.service';
     selector: 'course-card',
     templateUrl: './course-card.component.html',
     styleUrls: ['./course-card.component.css'],
-
 })
 export class CourseCardComponent implements OnInit {
 
@@ -51,7 +50,9 @@ export class CourseCardComponent implements OnInit {
 
     }
 
-
+    onTitleChanged(newTitle: string){
+        this.course.description = newTitle;
+    }
 
 
 }
